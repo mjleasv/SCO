@@ -59,6 +59,9 @@ public class CustomControlExample extends Application {
         VeryDifferentCustomControl diffControl = new VeryDifferentCustomControl(4);
         vbox.getChildren().add(diffControl);
         
+        //ControllerFactory Example: 
+        //https://stackoverflow.com/questions/36780986/in-javafx-8-can-a-controller-be-dynamically-added-to-a-node-not-created-using-f
+        
         stage.setScene(new Scene(vbox));
         stage.setTitle("Custom Control");
         stage.setWidth(300);
