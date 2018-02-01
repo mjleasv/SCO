@@ -41,31 +41,45 @@ import javafx.stage.Stage;
 public class CustomControlExample extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+        //Create the outer most VBox
         VBox vbox = new VBox();
         
+        //Create the First element for the VBox, an HBox
         HBox hbox = new HBox();
+        //Add the HBox to the VBox
         vbox.getChildren().add(hbox);
         
+        //Create custom control with left == true, this will use custom_control_left.fxml
         CustomControl customControlLeft = new CustomControl(true);
+        //Set the text in the textbox
         customControlLeft.setText("Hello Lefties!");
         
+        //Add the control to the HBox
         hbox.getChildren().add(customControlLeft);
         
+        //Create custom control with left == false, this will use custom_control_right.fxml
         CustomControl customControlRight = new CustomControl(false);
+        //Set the text in the textbox
         customControlRight.setText("Hello Rightoes!");
         
+        //Add the control to the HBox
         hbox.getChildren().add(customControlRight);
         
+        //Create a different custom control, that uses custom_control_left.fxml
         VeryDifferentCustomControl diffControl = new VeryDifferentCustomControl(4);
         vbox.getChildren().add(diffControl);
         
         //ControllerFactory Example: 
         //https://stackoverflow.com/questions/36780986/in-javafx-8-can-a-controller-be-dynamically-added-to-a-node-not-created-using-f
         
+        //Create a new Scene to add to the stage, and Add the VBox as the root.
         stage.setScene(new Scene(vbox));
+        //Set window title
         stage.setTitle("Custom Control");
+        //Set window width and height
         stage.setWidth(300);
         stage.setHeight(200);
+        //Show the window
         stage.show();
     }
     

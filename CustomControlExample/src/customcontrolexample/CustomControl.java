@@ -44,24 +44,31 @@ import javafx.scene.layout.VBox;
 /**
  * Sample custom control hosting a text field and a button.
  */
+//This custom control extends VBox, meaning it can be used where an fxml file's root is set to VBox.
 public class CustomControl extends VBox {
     @FXML private TextField textField;
 
+    //Instance variable to save the left value.
     private boolean isLeftOriented;
 
     public CustomControl(boolean left) {
         isLeftOriented = left;
         
+        //Set the default fxml to load, to custom_control_left.fxml
         URL fxmlToLoad = getClass().getResource("custom_control_left.fxml");
         if(!left)
         {
+            //If it's not left, set the default to custom_control_right.fxml
             fxmlToLoad = getClass().getResource("custom_control_right.fxml");
         }
         
+        //Create the FXML Loader
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlToLoad);
+        //Set this instance as the Root and the Controller for the fxml we're about to load.
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         
+        //Try loading the FXML
         try {
             fxmlLoader.load();            
         } catch (IOException exception) {
